@@ -86,7 +86,7 @@ export function Hero() {
       {/* HERO SECTION: Integrated composition with hero-updated-pic.png */}
       {/* ============================================================ */}
       <section
-        className="relative bg-white overflow-hidden rounded-bl-[20px] rounded-br-[20px] lg:rounded-bl-[28px] lg:rounded-br-[28px] isolate"
+        className="relative bg-white overflow-hidden lg:rounded-bl-[28px] lg:rounded-br-[28px] isolate"
         aria-label="WeManage Homepage Hero"
       >
         {/* DESKTOP LAYOUT (lg+): Single integrated canvas using hero-updated-pic.png */}
@@ -148,57 +148,72 @@ export function Hero() {
           </div>
         </div>
 
-        {/* MOBILE & TABLET LAYOUT (< lg): Visual First followed by Content */}
-        <div className="lg:hidden relative overflow-hidden rounded-b-[20px] bg-gradient-to-b from-[#F5F9FC] via-[#F8FAFC] to-white">
-          {/* 1. HERO IMAGE FIRST immediately below mobile Header with matching rounded bottom corners */}
-          <div className="relative w-full aspect-[16/7] sm:aspect-[16/6] min-h-[170px] sm:min-h-[230px] overflow-hidden rounded-b-[20px] [transform:translateZ(0)] isolate">
+        {/* MOBILE & TABLET LAYOUT (< lg): Single Integrated Hero Composition */}
+        <div className="lg:hidden w-full bg-[#EEF4F8]">
+          <div className="relative w-full min-h-[520px] sm:min-h-[560px] flex items-center overflow-hidden rounded-b-[22px] isolate [transform:translateZ(0)]">
+            {/* 1. Full Visual Background */}
             <Image
               src="/images/hero-updated-pic.png"
               alt="WeManage Consultancy Services - Workspace and skyline visual"
               fill
               priority
-              className="object-cover sm:object-fill pointer-events-none"
+              className="object-cover object-[72%_center] sm:object-[68%_center] pointer-events-none"
               sizes="(max-width: 1023px) 100vw, 1px"
             />
-          </div>
 
-          {/* 2. TEXT & ACTIONS SECOND */}
-          <div className="px-4 sm:px-6 pt-6 sm:pt-7 pb-8">
-            <p className="text-xs font-bold uppercase tracking-wider text-[var(--wemanage-cyan)] mb-2.5">
-              WELCOME TO WEMANAGE CONSULTANCY SERVICES
-            </p>
+            {/* 2. Professional Light Readability Gradient Overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none bg-[linear-gradient(90deg,rgba(255,255,255,0.97)_0%,rgba(255,255,255,0.92)_50%,rgba(255,255,255,0.45)_75%,rgba(255,255,255,0.10)_100%)]"
+              aria-hidden="true"
+            />
 
-            <h1 className="text-3xl sm:text-4xl font-bold text-[var(--wemanage-navy)] tracking-tight leading-tight">
-              Practical Solutions.<br />
-              Better Management.<br />
-              <span className="text-[var(--wemanage-cyan)]">Stronger Business.</span>
-            </h1>
+            {/* 3. Hero HTML Content sitting directly in the open space */}
+            <div className="relative z-10 w-full max-w-[1360px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+              <div className="max-w-[480px]">
+                {/* Eyebrow */}
+                <p className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[var(--wemanage-cyan)] mb-2.5">
+                  WELCOME TO WEMANAGE CONSULTANCY SERVICES
+                </p>
 
-            <p className="mt-3.5 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              We provide practical business, accounting, tax, ERP, data management and
-              content solutions for companies, entrepreneurs and professionals.
-            </p>
+                {/* Main Headline */}
+                <h1 className="text-3xl sm:text-4xl font-bold text-[var(--wemanage-navy)] tracking-tight leading-tight">
+                  Practical Solutions.<br />
+                  Better Management.<br />
+                  <span className="text-[var(--wemanage-cyan)]">Stronger Business.</span>
+                </h1>
 
-            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <PrimaryButton
-                href="/contact"
-                variant="cyan"
-                className="rounded-full gap-2 px-6 py-3 text-sm font-semibold shadow-xs text-center justify-center"
-              >
-                <span>Get a Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </PrimaryButton>
+                {/* Concise Business Paragraph */}
+                <p className="mt-3.5 text-sm sm:text-base text-slate-700 leading-relaxed font-normal max-w-md">
+                  We provide practical business, accounting, tax, ERP, data management and
+                  content solutions for companies, entrepreneurs and professionals.
+                </p>
 
-              <PrimaryButton
-                href="/services"
-                variant="outline-cyan"
-                className="rounded-full gap-2 px-6 py-3 text-sm font-semibold text-center justify-center"
-              >
-                <span>Explore Services</span>
-                <ArrowRight className="w-4 h-4" />
-              </PrimaryButton>
+                {/* Dual Restrained Action Buttons */}
+                <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <PrimaryButton
+                    href="/contact"
+                    variant="cyan"
+                    className="rounded-full gap-2 px-6 py-3 text-sm font-semibold shadow-xs text-center justify-center"
+                  >
+                    <span>Get a Consultation</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </PrimaryButton>
+
+                  <PrimaryButton
+                    href="/services"
+                    variant="outline-cyan"
+                    className="rounded-full gap-2 px-6 py-3 text-sm font-semibold text-center justify-center bg-white/80 hover:bg-white"
+                  >
+                    <span>Explore Services</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </PrimaryButton>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Clean small gap before Our Services */}
+          <div className="h-3 sm:h-3.5 w-full bg-[#EEF4F8]" aria-hidden="true" />
         </div>
       </section>
 
