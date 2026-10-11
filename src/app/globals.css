@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  /* Colors */
+  --wemanage-navy: #102D4F;
+  --wemanage-cyan: #08A9DD;
+  --wemanage-gold: #F1B72D;
+  --wemanage-light: #F5F9FC;
+  --wemanage-text: #607285;
+  --wemanage-white: #FFFFFF;
+}
+
+@theme inline {
+  --color-wemanage-navy: var(--wemanage-navy);
+  --color-wemanage-cyan: var(--wemanage-cyan);
+  --color-wemanage-gold: var(--wemanage-gold);
+  --color-wemanage-light: var(--wemanage-light);
+  --color-wemanage-text: var(--wemanage-text);
+  
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--wemanage-white);
+  color: var(--wemanage-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @media (min-width: 1024px) {
+    .mask-fade-left {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 6%, black 15%, black 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 6%, black 15%, black 100%);
+    }
+  }
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--wemanage-navy);
+  }
+  p {
+    color: var(--wemanage-text);
+  }
+  footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+    color: #ffffff;
+  }
+  footer p {
+    color: #cbd5e1;
+  }
+}
+
