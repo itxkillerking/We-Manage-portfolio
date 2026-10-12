@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronRight,
@@ -105,19 +104,47 @@ const pillars = [
 export default function WhyWeManagePage() {
   return (
     <>
+      {/* Route-specific LCP Hero Preload */}
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-wemanage-desktop.webp"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-wemanage-mobile.webp"
+        type="image/webp"
+        media="(max-width: 767px)"
+      />
+
       {/* ============================================================ */}
       {/* 1. EDITORIAL WHY WEMANAGE HERO                                */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] bg-[#0A2342] overflow-hidden flex flex-col justify-center border-b border-slate-200/80">
-        {/* Single Responsive Background Image */}
-        <Image
-          src="/images/image-for-wemanage.png"
-          alt="WeManage consulting team reviewing financial models and operational strategies"
-          fill
-          priority
-          className="object-cover object-right lg:object-[82%_center]"
-          sizes="100vw"
-        />
+        {/* Pre-optimized Responsive Hero Background */}
+        <picture className="absolute inset-0 block w-full h-full pointer-events-none">
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/hero-wemanage-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/hero-wemanage-desktop.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/hero-wemanage-desktop.webp"
+            alt="WeManage consulting team reviewing financial models and operational strategies"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-right lg:object-[82%_center]"
+          />
+        </picture>
 
         {/* Directional Navy Gradient Overlay (Strong left fade, clear image on right) */}
         <div

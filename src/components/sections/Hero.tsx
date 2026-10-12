@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import {
@@ -91,15 +90,22 @@ export function Hero() {
       >
         {/* DESKTOP LAYOUT (lg+): Single integrated canvas using hero-updated-pic.png */}
         <div className="hidden lg:block relative min-h-[500px] xl:min-h-[533px] w-full overflow-hidden rounded-bl-[28px] rounded-br-[28px]">
-          {/* Integrated Background Visual */}
-          <Image
-            src="/images/hero-updated-pic.png"
-            alt="WeManage Consultancy Services - Your Business. Our Expertise."
-            fill
-            priority
-            className="object-fill pointer-events-none"
-            sizes="(min-width: 1024px) 100vw, 1px"
-          />
+          {/* Integrated Pre-optimized Background Visual */}
+          <picture className="absolute inset-0 block w-full h-full pointer-events-none">
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/images/hero-home-desktop.webp"
+              type="image/webp"
+            />
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjwvc3ZnPg=="
+              alt="WeManage Consultancy Services - Your Business. Our Expertise."
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-full object-fill pointer-events-none"
+            />
+          </picture>
 
           {/* Left Text Overlay sitting in the clean space */}
           <div className="relative max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[500px] xl:min-h-[533px] flex items-center z-10">
@@ -151,15 +157,22 @@ export function Hero() {
         {/* MOBILE & TABLET LAYOUT (< lg): Single Integrated Hero Composition */}
         <div className="lg:hidden w-full bg-[#EEF4F8]">
           <div className="relative w-full min-h-[520px] sm:min-h-[560px] flex items-center overflow-hidden rounded-b-[22px] isolate [transform:translateZ(0)]">
-            {/* 1. Full Visual Background */}
-            <Image
-              src="/images/hero-updated-pic.png"
-              alt="WeManage Consultancy Services - Workspace and skyline visual"
-              fill
-              priority
-              className="object-cover object-[72%_center] sm:object-[68%_center] pointer-events-none"
-              sizes="(max-width: 1023px) 100vw, 1px"
-            />
+            {/* 1. Full Pre-optimized Visual Background */}
+            <picture className="absolute inset-0 block w-full h-full pointer-events-none">
+              <source
+                media="(max-width: 1023px)"
+                srcSet="/images/hero-home-mobile.webp"
+                type="image/webp"
+              />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjwvc3ZnPg=="
+                alt="WeManage Consultancy Services - Workspace and skyline visual"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] pointer-events-none"
+              />
+            </picture>
 
             {/* 2. Professional Light Readability Gradient Overlay */}
             <div

@@ -128,19 +128,47 @@ const industriesData = [
 export default function IndustriesPage() {
   return (
     <>
+      {/* Route-specific LCP Hero Preload */}
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-industries-desktop.webp"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-industries-mobile.webp"
+        type="image/webp"
+        media="(max-width: 767px)"
+      />
+
       {/* ============================================================ */}
       {/* 1. EDITORIAL INDUSTRIES HERO                                 */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[420px] sm:min-h-[460px] lg:min-h-[500px] bg-[#0A2342] overflow-hidden flex flex-col justify-center border-b border-slate-200/80">
-        {/* Single Responsive Background Image */}
-        <Image
-          src="/images/image-for-industries.png"
-          alt="Diverse business environments across trading, manufacturing, and corporate services"
-          fill
-          priority
-          className="object-cover object-right lg:object-[80%_center]"
-          sizes="100vw"
-        />
+        {/* Pre-optimized Responsive Hero Background */}
+        <picture className="absolute inset-0 block w-full h-full pointer-events-none">
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/hero-industries-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/hero-industries-desktop.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/hero-industries-desktop.webp"
+            alt="Diverse business environments across trading, manufacturing, and corporate services"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-right lg:object-[80%_center]"
+          />
+        </picture>
 
         {/* Directional Navy Gradient Overlay (Strong left fade, clear image on right) */}
         <div

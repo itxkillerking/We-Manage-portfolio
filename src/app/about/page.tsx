@@ -50,19 +50,47 @@ const serviceModels = [
 export default function AboutPage() {
   return (
     <>
+      {/* Route-specific LCP Hero Preload */}
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-about-desktop.webp"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-about-mobile.webp"
+        type="image/webp"
+        media="(max-width: 767px)"
+      />
+
       {/* ============================================================ */}
       {/* 1. FULL-WIDTH EDITORIAL ABOUT HERO                           */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[420px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src="/images/image-for-about-us.png"
-          alt="WeManage professional business consultancy team collaborating in a modern office"
-          fill
-          priority
-          className="object-cover object-center lg:object-[center_30%]"
-          sizes="100vw"
-        />
+        {/* Pre-optimized Responsive Hero Background */}
+        <picture className="absolute inset-0 block w-full h-full pointer-events-none">
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/hero-about-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/hero-about-desktop.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/hero-about-desktop.webp"
+            alt="WeManage professional business consultancy team collaborating in a modern office"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-center lg:object-[center_30%]"
+          />
+        </picture>
 
         {/* Directional Gradient Overlay — stronger left, transparent right */}
         <div
